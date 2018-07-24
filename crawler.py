@@ -1,9 +1,14 @@
 import news_crawler
 
-ny_fetch = news_crawler.NyTimesFetcher("https://www.nytimes.com/")
+fetcher_list = [
+    news_crawler.RtFetcher("https://www.rt.com/news"),
+    news_crawler.NyTimesFetcher("https://www.nytimes.com/")
+]
 
-for article in ny_fetch.fetch():
-    article.show()
-    print "\n"
+i = 0
 
-
+for fetcher in fetcher_list:
+    for article in fetcher.fetch():
+        i += 1
+        article.show()
+        print "\n"
