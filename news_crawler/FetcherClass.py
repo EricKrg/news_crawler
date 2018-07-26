@@ -10,6 +10,7 @@ except ImportError:
 
 # ---------------------------------------
 
+# parent fetcher
 class Fetcher(object):
     def __init__(self, con):
         self.con = con
@@ -53,6 +54,24 @@ class RtFetcher(Fetcher):
                                   type="RT")
 
 
+class BBCFetcher(Fetcher):
+    def __init__(self, con):
+        super(BBCFetcher, self).__init__(con)  # this redundant atm
+
+    def fetch(self):
+        # get fetcher method
+        doc = super(BBCFetcher, self).fetch()
+
+        counter = 0
+        for element in doc.select(".gs-c-promo"):
+            counter += 1
+            content = element.select_one(".gs-c-promo-summary")
+            if content is not None and counter <= 10:
+                yield NewsArticle(title=element.select_one(".gs-c-promo-heading").text,
+                                  content=content.text, type="BBC")
+
+
+# other fetchers not implemented yet
 class WpFetcher(object):
     def __init__(self, con):
         super(WpFetcher, self).__init__(con)  # this redundant atm
