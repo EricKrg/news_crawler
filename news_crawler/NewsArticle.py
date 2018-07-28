@@ -5,6 +5,6 @@ class NewsArticle(object):
         self.type = type
 
     def show(self):
-        print self.title
-        print self.content
-        print self.type
+        print(self.title)
+        print(self.content)
+        print(self.type)

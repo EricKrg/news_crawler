@@ -12,4 +12,4 @@ for fetcher in fetcher_list:
     for article in fetcher.fetch():
         i += 1
         article.show()
-        print "\n"
+        print ("\n")
