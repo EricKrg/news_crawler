@@ -10,5 +10,8 @@ class NewsArticle(object):
         print(self.type)
 
     def to_markdown(self):
-        return '### ' + self.title + "\n" + self.content
+        return MarkdownArticle('### ' + self.title + "\n" + self.content)
  
+class MarkdownArticle(object):
+    def __init__(self,content):
+        self.content = content
