@@ -14,7 +14,7 @@ app = dash.Dash()
 # app layout
 # 
 colors = {'background':'#111111','text':'#ffffff'} # nice way of org. colors
-article_style = dict(width = '30%', verticalAlign='top',
+article_style = dict(width = '20%', verticalAlign='top',
     color = colors['text'], display='inline-block')
 
 def create_provider_layout(providers):
@@ -32,7 +32,7 @@ def create_provider_layout(providers):
 # this returns a dictonary of created html, this way it could be added to the app layout 
 # by passing the key like: provider_layout['ny']
 
-providers = {'ny':'NY-Times', 'rt':'Russia Today', 'bbc':'BBC'}
+providers = {'ny':'NY-Times', 'rt':'Russia Today', 'bbc':'BBC', 'aj':'Aljazeera'}
 provider_layout = create_provider_layout(providers)
 app.layout = html.Div([
     html.Button(id='submit_bttn',
@@ -41,7 +41,8 @@ app.layout = html.Div([
                 style=dict(fontSize='24')),  # add a submmit button
     provider_layout['ny'],
     provider_layout['rt'],
-    provider_layout['bbc']
+    provider_layout['bbc'],
+    provider_layout['aj'],
 ], style = dict(backgroundColor = colors['background']))
 
 # callbacks for interactivity
@@ -69,6 +70,13 @@ def output_bbc(n):
         bbc_text = bbc_text + "\n" + article.to_markdown().content
     return bbc_text
 
+@app.callback(Output('aj', 'children'),
+              [Input('submit_bttn', 'n_clicks')])
+def output_aj(n):
+    aj_text = ''
+    for article in articles.fetch_all(keys =['aj']):
+        aj_text = aj_text + "\n" + article.to_markdown().content
+    return aj_text
 
 
 # run

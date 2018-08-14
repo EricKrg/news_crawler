@@ -8,7 +8,8 @@ class FetchList(object):
         self.fetchers = {
             'rt':RtFetcher("https://www.rt.com/news"),
             'ny':NyTimesFetcher("https://www.nytimes.com/"),
-            'bbc':BBCFetcher("https://www.bbc.com/news")
+            'bbc':BBCFetcher("https://www.bbc.com/news"),
+            'aj':AJFetcher('https://www.aljazeera.com/news/')
         }
     def fetch_all(self, keys):
         art_list = []
