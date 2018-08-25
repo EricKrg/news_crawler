@@ -1,0 +1,88 @@
+\documentclass{article}
+
+% packages and configurations
+\usepackage{animate} % needed for animations and videos
+\usepackage[utf8]{inputenc}	% für Umlaute ect.
+\usepackage{fancyhdr} % für header
+\usepackage{lastpage} % für footer
+\usepackage{extramarks} % für header und footer
+\usepackage{amsthm} % math stuff
+\usepackage{amsmath} % math stuff
+\usepackage{amssymb} % math stuff
+\usepackage{color}
+\usepackage{listings} % code listings
+\usepackage{graphicx} % für graphics
+\usepackage{color}
+\usepackage{tikz}
+\usepackage[absolute,overlay]{textpos} %to translate graphics through space
+\usepackage{soul}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{textpos}
+\usepackage{caption}
+\usepackage{parcolumns}
+\usepackage{enumerate}
+\usepackage[ngerman]{babel} % Umlaute
+\usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pd
+\usepackage[section]{placeins} %forces placeins to stay in section
+\usepackage{datetime} % custom dates
+\usepackage{afterpage}
+\usepackage[section]{placeins}
+
+\title{Sentiment Analysis Theory and Applications}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Introduction}
+
+What is sentiment analysis
+
+
+In this project the goal is to extract useful information out of news articels gathered from different news portals. One idea is to compare the sentiment of articels from different sources.
+
+In general there are three types of approaches for sentiment analysis:
+\begin{itemize}
+  \item Kowledge based techniques, ...
+  \item Statistical methods, which use machine learning methods for fitting models which return the sentiment of a sentence or document
+  \item Hybrid approaches
+\end{itemize}
+A problem of sentiment analyis is that often even humans do not agree over the sentiment of a text, so it is difficult to evaluate the performance of an algorithm.
+
+\section{Knowledge based techniques}
+
+\section{Statistical methods}
+
+Machine learning methods
+
+\subsection{Binary SPAM classification by support vector machines}
+
+An exercise from the statistical learning lab module deals with SPAM filtering by using support vector machines. For that purpose, training data in the form of emails is given. Each mail is labeled as either SPAM or HAM (no SPAM).\\
+\\
+First, feature encoding is performed. That means, transforming the training data in a way that it can be used by a classification algorithm. In this case, the "bag-of-words" model is used. Each word, that occurs in the training data set is represented as a binary variable. Each email text is encoded in a way that if a word occurs in the text, the corresponding variable has the value 1, otherwise it has the value 0. This way, the text is transformed into a set of binary variables. 
+\\
+\\
+On this transformed dataset, a support vector machine alorithm can be trained to predict wether a text is SPAM or HAM.
+\\
+\\
+Disadvantages from my point of view:
+\begin{itemize}
+  \item Needs labeled training data
+  \item Needs clear distinction (SPAM or HAM). I don't know if that is the case in  sentiment analysis
+\end{itemize}
+
+\section{Hybrid approaches}
+
+Ontologies, semantic networks
+
+\section{Miscellaneous}
+
+Maybe first just use bag-of-words model, which disregards context, grammar and even word order. According to wikipedia, most sentiment classification approaches do that.
+\\
+Maybe predict source from text.
+
+\subsection{Subjectivity/objectivity identification}
+
+\end{document}

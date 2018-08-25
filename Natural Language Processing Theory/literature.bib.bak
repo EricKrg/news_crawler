@@ -1,0 +1,11 @@
+% Encoding: UTF-8
+
+@Misc{wiki:sentiment,
+  author = {{Wikipedia contributors}},
+  title  = {Sentiment analysis --- {Wikipedia}{,} The Free Encyclopedia},
+  year   = {2018},
+  note   = {[Online; accessed 25-August-2018]},
+  url    = {https://en.wikipedia.org/w/index.php?title=Sentiment_analysis&oldid=854377022},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
