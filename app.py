@@ -32,27 +32,27 @@ def create_provider_layout(providers):
 # this returns a dictonary of created html, this way it could be added to the app layout 
 # by passing the key like: provider_layout['ny']
 
-providers = {'ny':'NY-Times', 'rt':'Russia Today', 'bbc':'BBC', 'aj':'Aljazeera'}
+providers = {'cnn':'CNN', 'rt':'Russia Today', 'bbc':'BBC', 'aj':'Aljazeera'}
 provider_layout = create_provider_layout(providers)
 app.layout = html.Div([
     html.Button(id='submit_bttn',
                 n_clicks=0,
                 children='Update',
                 style=dict(fontSize='24')),  # add a submmit button
-    provider_layout['ny'],
+    provider_layout['cnn'],
     provider_layout['rt'],
     provider_layout['bbc'],
     provider_layout['aj'],
 ], style = dict(backgroundColor = colors['background']))
 
 # callbacks for interactivity
-@app.callback(Output('ny', 'children'),
+@app.callback(Output('cnn', 'children'),
               [Input('submit_bttn', 'n_clicks')])
 def output(n):
-    ny_text = ''
-    for article in articles.fetch_all(keys =['ny']):
-        ny_text = ny_text + "\n" + article.to_markdown().content
-    return ny_text
+    cnn_text = ''
+    for article in articles.fetch_all(keys =['cnn']):
+        cnn_text = cnn_text + "\n" + article.to_markdown().content
+    return cnn_text
 
 @app.callback(Output('rt', 'children'),
               [Input('submit_bttn', 'n_clicks')])

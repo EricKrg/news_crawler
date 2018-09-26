@@ -7,7 +7,8 @@ class FetchList(object):
     def __init__(self):
         self.fetchers = {
             'rt':RtFetcher("https://www.rt.com/news"),
-            'ny':NyTimesFetcher("https://www.nytimes.com/"),
+            #'ny':NyTimesFetcher("https://www.nytimes.com/"), not working atm
+            'cnn': CnnFetcher('https://edition.cnn.com/regions'),
             'bbc':BBCFetcher("https://www.bbc.com/news"),
             'aj':AJFetcher('https://www.aljazeera.com/news/')
         }

@@ -2,10 +2,9 @@ import requests
 from .NewsArticle import NewsArticle
 from bs4 import BeautifulSoup
 
-try:
-    from urllib.parse import urlparse
-except ImportError:
-    from urlparse import urljoin
+from urllib.parse import urlparse
+from urllib.parse import urljoin
+
 
 
 # ---------------------------------------
@@ -96,6 +95,28 @@ class AJFetcher(Fetcher): # this fetcher is quite ugly
                     for i in range(len(titles)):
                         yield NewsArticle(title=titles[i].text,
                         content=content[i].text, type= 'AJ', ref = 'https://www.aljazeera.com/'+ref_list[i])
+
+class CnnFetcher(Fetcher):
+    def __init__(self, con):
+        super(CnnFetcher, self).__init__(con)  # this redundant atm
+
+    def fetch(self):
+        # get fetcher method
+        doc = super(CnnFetcher, self).fetch()
+
+        for element in doc.select("section"):
+            title = element.select_one(".cd__headline").text
+            ref = element.select_one('a').attrs['href']
+            if ref[0:4] != 'http':
+                r_deep = requests.get(urljoin('https://edition.cnn.com/regions', ref))
+                doc_deep = BeautifulSoup(r_deep.text, "html.parser")
+                content = doc_deep.select_one('.l-container .zn-body__paragraph').text
+                yield NewsArticle(title=title,
+                                  ref=ref,
+                                  content=content, type="CNN")
+
+    pass
+
 
 class WpFetcher(object):
     def __init__(self, con):
